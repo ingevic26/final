@@ -1,5 +1,7 @@
 package com.example.registro_personas.configuration;
 
+
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.Customizer;
@@ -13,10 +15,10 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .csrf(csrf -> csrf.disable())
+                .cors(Customizer.withDefaults()) // 🔹 Habilita CORS
                 .authorizeHttpRequests(auth -> auth
                         .anyRequest().permitAll()
                 );
         return http.build();
-    }
 }
-
+}
